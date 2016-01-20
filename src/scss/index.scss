@@ -1,0 +1,50 @@
+@import url(https://fonts.googleapis.com/css?family=Raleway:400,700,300);
+body {
+  margin: 0;
+  font-family: Lora,serif;
+}
+header {
+  float: left;
+  display: block;
+  margin-right: 4.72458%;
+  width: 100%;
+  padding: 4.72458%;
+  background: #f25f5c;
+  text-align: center;
+  border-bottom: 2px solid #ffe066;
+  // Fix mobiel here...
+}
+.post {
+  display: block;
+}
+h1,
+h2 {
+  color: #f5f5f5;
+}
+h1 {
+  color: #ffe066;
+  font-size: 2em;
+}
+a {
+  background-color: transparent;
+  text-decoration: none;
+  color: #f25f5c;
+}
+p {
+    line-height: 1.618;
+    font-size: 1.2rem;
+    color: #515150;
+}
+.post {
+  margin-bottom: 8vh;
+  h2 {
+    color: #f25f5c;
+    font-family: 'Raleway', sans-serif;
+    font-size: 2em;
+  }
+  time {
+    margin-top: -4vh;
+    font-size: 1rem;
+    color: #70c1b4;
+  }
+}

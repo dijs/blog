@@ -1,50 +1,119 @@
 @import url(https://fonts.googleapis.com/css?family=Raleway:400,700,300);
+
+$tablet-width: 768px;
+$desktop-width: 1024px;
+
+@mixin tablet {
+  @media (min-width: #{$tablet-width}) and (max-width: #{$desktop-width - 1px}) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media (min-width: #{$desktop-width}) {
+    @content;
+  }
+}
+
+$red: #f25f5c;
+$yellow:#ffe066;
+$white: #f5f5f5;
+$gray: #515150;
+$blue: #70c1b4;
+
 body {
   margin: 0;
-  font-family: Lora,serif;
+  font-family: 'Raleway', serif;
+  background: $yellow;
+  height: 100%;
 }
 header {
-  float: left;
-  display: block;
-  margin-right: 4.72458%;
-  width: 100%;
   padding: 4.72458%;
-  background: #f25f5c;
+  background: $red;
   text-align: center;
-  border-bottom: 2px solid #ffe066;
-  // Fix mobiel here...
 }
-.post {
-  display: block;
+.posts {
+  margin: 20px;
+  position: relative;
+  height: 100%;
+  @include desktop {
+    &::before {
+      content: '';
+      border: 1px solid $white;
+      height: 100%;
+      position: absolute;
+      left: 50%;
+      top: 0;
+    }
+    &::after {
+      content: '';
+      display: table;
+      clear: both;
+    }
+  }
 }
 h1,
 h2 {
-  color: #f5f5f5;
+  font-family: 'Raleway', sans-serif;
+  color: $white;
+  margin: 0;
 }
 h1 {
-  color: #ffe066;
+  color: $yellow;
   font-size: 2em;
+  margin: 0;
 }
 a {
   background-color: transparent;
   text-decoration: none;
-  color: #f25f5c;
+  color: $red;
 }
 p {
-    line-height: 1.618;
-    font-size: 1.2rem;
-    color: #515150;
+  line-height: 1.618;
+  font-size: 1.2rem;
+  color: $gray;
 }
 .post {
-  margin-bottom: 8vh;
+  display: block;
+  position: relative;
+  margin-bottom: 20px;
+  padding: 20px;
+  background: $white;
+  @include desktop {
+    width: 44%;
+    clear: both;
+    &:nth-of-type(2n) {
+      float: left;
+      &::before {
+        content: '▶';
+        position: absolute;
+        right: -24px;
+        font-size: 30px;
+        color: $white;
+        top: 16px;
+      }
+    }
+    &:nth-of-type(2n+1) {
+      float: right;
+      &::before {
+        content: '◀';
+        position: absolute;
+        left: -25px;
+        font-size: 30px;
+        color: $white;
+        top: 16px;
+      }
+    }
+  }
   h2 {
-    color: #f25f5c;
+    color: $red;
     font-family: 'Raleway', sans-serif;
     font-size: 2em;
   }
   time {
-    margin-top: -4vh;
+    display: block;
+    margin: 10px 0;
     font-size: 1rem;
-    color: #70c1b4;
+    color: $blue;
   }
 }

@@ -10,7 +10,7 @@ var sass = require('metalsmith-sass');
 var options = require('./options.json');
 
 metalsmith(__dirname)
-  .use(express())
+  .use(express(options.express))
   .use(watch(options.watch))
   .use(collections(options.collection))
   .use(markdown())

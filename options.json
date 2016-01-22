@@ -24,5 +24,8 @@
       "${source}/**/*": true
     },
     "livereload": true
+  },
+  "express": {
+    "port": 3001
   }
 }

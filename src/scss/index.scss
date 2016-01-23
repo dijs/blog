@@ -15,16 +15,18 @@ header {
   background: $red;
   text-align: center;
   img {
-    width: 100%;
+    height: 120px;
   }
   @include desktop {
     img {
       width: auto;
+      height: 192px;
     }
   }
   @include tablet {
     img {
       width: auto;
+      height: 192px;
     }
   }
 }

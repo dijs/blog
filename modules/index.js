@@ -21,7 +21,7 @@ export default function({posts}) {
     </head>
     <body>
       <header>
-        <img src='//placehold.it/389x250&text=CARTOON' />
+        <img src='/public/avatar.svg' />
         <h1>Richard <span>van der Dys III</span></h1>
         <h2>Lessons Learned</h2>
       </header>

@@ -8,9 +8,11 @@ var snippet = require('metalsmith-snippet');
 var typography = require('metalsmith-typography');
 var sass = require('metalsmith-sass');
 var codeHighlight = require('metalsmith-code-highlight');
+var static = require('metalsmith-static');
 var options = require('./options.json');
 
 metalsmith(__dirname)
+  .use(static())
   .use(express(options.express))
   .use(watch(options.watch))
   .use(collections(options.collection))

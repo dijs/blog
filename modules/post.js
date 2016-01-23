@@ -6,6 +6,7 @@ export default function(props) {
   return <html>
     <head>
       <link rel='stylesheet' type='text/css' href='/css/post.css' />
+      <link rel='stylesheet' type='text/css' href='//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.1.0/styles/default.min.css' />
       <meta name='viewport' content='width=device-width, initial-scale=1' />
       <title>{title}</title>
     </head>

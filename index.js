@@ -7,6 +7,7 @@ var express = require('metalsmith-express');
 var snippet = require('metalsmith-snippet');
 var typography = require('metalsmith-typography');
 var sass = require('metalsmith-sass');
+var codeHighlight = require('metalsmith-code-highlight');
 var options = require('./options.json');
 
 metalsmith(__dirname)
@@ -15,11 +16,10 @@ metalsmith(__dirname)
   .use(collections(options.collection))
   .use(markdown(options.markdown))
   .use(typography())
+  .use(codeHighlight())
   .use(snippet(options.snippet))
   .use(react(options.react))
   .use(sass(options.sass))
   .build(function (err) {
     if (err) throw err;
   });
-
-// http://brage.switchbit.io/

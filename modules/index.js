@@ -22,7 +22,7 @@ export default function({posts}) {
     <body>
       <header>
         <img src='//placehold.it/389x250&text=CARTOON' />
-        <h1>Richard van der Dys III</h1>
+        <h1>Richard <span>van der Dys III</span></h1>
         <h2>Lessons Learned</h2>
       </header>
       <div className='posts'>

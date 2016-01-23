@@ -9,12 +9,11 @@
   "collection": {
     "posts": {
       "pattern": "posts/*.md",
-      "sortBy": "date",
-      "reverse": true
+      "sortBy": "date"
     }
   },
   "snippet": {
-    "maxLength": 300
+    "maxLength": 200
   },
   "sass": {
     "outputDir": "css/"
@@ -24,6 +23,10 @@
       "${source}/**/*": true
     },
     "livereload": true
+  },
+  "markdown": {
+    "html": true,
+    "linkify": true
   },
   "express": {
     "port": 3001

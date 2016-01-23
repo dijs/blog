@@ -1,36 +1,32 @@
 @import url(https://fonts.googleapis.com/css?family=Raleway:400,700,300);
 
-$tablet-width: 768px;
-$desktop-width: 1024px;
-
-@mixin tablet {
-  @media (min-width: #{$tablet-width}) and (max-width: #{$desktop-width - 1px}) {
-    @content;
-  }
-}
-
-@mixin desktop {
-  @media (min-width: #{$desktop-width}) {
-    @content;
-  }
-}
-
-$red: #f25f5c;
-$yellow:#ffe066;
-$white: #f5f5f5;
-$gray: #515150;
-$blue: #70c1b4;
+@import 'mixins';
+@import 'vars';
 
 body {
   margin: 0;
   font-family: 'Raleway', serif;
   background: $yellow;
   height: 100%;
+  line-height: 24px;
 }
 header {
   padding: 4.72458%;
   background: $red;
   text-align: center;
+  img {
+    width: 100%;
+  }
+  @include desktop {
+    img {
+      width: auto;
+    }
+  }
+  @include tablet {
+    img {
+      width: auto;
+    }
+  }
 }
 .posts {
   margin: 20px;
@@ -57,11 +53,25 @@ h2 {
   font-family: 'Raleway', sans-serif;
   color: $white;
   margin: 0;
+  line-height: 32px;
 }
 h1 {
   color: $yellow;
   font-size: 2em;
-  margin: 0;
+  margin: 20px 0;
+  span {
+    display: block;
+  }
+  @include desktop {
+    span {
+      display: inline;
+    }
+  }
+  @include tablet {
+    span {
+      display: inline;
+    }
+  }
 }
 a {
   background-color: transparent;

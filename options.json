@@ -9,6 +9,7 @@
   "collection": {
     "posts": {
       "pattern": "posts/*.md",
+      "reverse": true,
       "sortBy": "date"
     }
   },

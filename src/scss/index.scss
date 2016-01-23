@@ -97,9 +97,9 @@ p {
     &:nth-of-type(2n) {
       float: left;
       &::before {
-        content: '▶';
+        content: '\25b6';
         position: absolute;
-        right: -24px;
+        right: -23px;
         font-size: 30px;
         color: $white;
         top: 16px;
@@ -108,7 +108,7 @@ p {
     &:nth-of-type(2n+1) {
       float: right;
       &::before {
-        content: '◀';
+        content: '\25c0';
         position: absolute;
         left: -25px;
         font-size: 30px;

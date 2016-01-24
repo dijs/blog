@@ -1,0 +1,33 @@
+<!doctype html>
+<html><head><link rel="stylesheet" type="text/css" href="/css/post.css"/><link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.1.0/styles/default.min.css"/><link rel="icon" type="image/png" href="/public/favicon.png"/><meta name="viewport" content="width=device-width, initial-scale=1"/><title>Log with Comments</title></head><body><header><a href="/" class="back">« Back</a><h1>Log with Comments</h1></header><time>12/25/2015</time><article><p>Recently, I&nbsp;was debugging though a&nbsp;codebase and&nbsp;had inserted a&nbsp;bunch of&nbsp;logging statements in&nbsp;between the&nbsp;problem areas. Normally, after debugging and&nbsp;solving the&nbsp;issues, I&nbsp;would remove the&nbsp;logs and&nbsp;be done with it. Code is working again, done, move on&nbsp;with life…</p>
+<p>Wrong!</p>
+<p>It will bite you. Most of&nbsp;us cannot remember those fine details in&nbsp;our codebase, especially when the&nbsp;logic is any kind of&nbsp;complicated.</p>
+<p>I&nbsp;have made the&nbsp;mistake many times, and&nbsp;it finally clicked for&nbsp;me. If I&nbsp;am already logging information which helps me understand what the&nbsp;program is doing, why not use that for&nbsp;comments? So, instead of&nbsp;ripping out the&nbsp;logs I&nbsp;added after debugging, I&nbsp;just convert them to&nbsp;practical future knowledge comments.</p>
+<p>By&nbsp;the way, this does not replace following good code standards and&nbsp;using descriptive variable and&nbsp;function/method names, etc.</p>
+<p>Example:</p>
+<pre><code class="language-js lang-javascript"><span class="hljs-keyword">if</span>(balance - amount &gt; <span class="hljs-number">0</span>) {
+  withdraw(amount);
+}<span class="hljs-keyword">else</span>{
+  <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Error</span>(<span class="hljs-string">'not enough money'</span>);
+}
+</code></pre>
+<p>There is a&nbsp;bug in&nbsp;this code. You cannot empty your account if you wanted to, because you must leave a&nbsp;balance larger than zero.</p>
+<p>But by&nbsp;just glancing at&nbsp;it, that may not be immediately understood.</p>
+<p>If I&nbsp;were debugging this code, I&nbsp;may do this:</p>
+<pre><code class="language-js lang-javascript"><span class="hljs-keyword">if</span>(balance - amount &gt; <span class="hljs-number">0</span>) {
+  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'withdrew '</span> + amount + <span class="hljs-string">' and left '</span> + (balance - amount));
+  withdraw(amount);
+}<span class="hljs-keyword">else</span>{
+  <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Error</span>(<span class="hljs-string">'not enough money'</span>);
+}
+</code></pre>
+<p>After finding the&nbsp;error, I&nbsp;would switch that log statement to&nbsp;a useful comment.</p>
+<pre><code class="language-javascript lang-javascript"><span class="hljs-comment">// Withdrawal amount must not exceed account balance, but can equal balance for emptying an account</span>
+<span class="hljs-keyword">if</span>(balance - amount &gt;= <span class="hljs-number">0</span>) {
+  withdraw(amount);
+}<span class="hljs-keyword">else</span>{
+  <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Error</span>(<span class="hljs-string">'not enough money'</span>);
+}
+</code></pre>
+<p>Go an&nbsp;write some better comments, so you will understand your old code in&nbsp;the future!</p>
+</article></body></html>

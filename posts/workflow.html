@@ -1,0 +1,27 @@
+<!doctype html>
+<html><head><link rel="stylesheet" type="text/css" href="/css/post.css"/><link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.1.0/styles/default.min.css"/><link rel="icon" type="image/png" href="/public/favicon.png"/><meta name="viewport" content="width=device-width, initial-scale=1"/><title>Workflow</title></head><body><header><a href="/" class="back">« Back</a><h1>Workflow</h1></header><time>09/19/2015</time><article><p>Over the&nbsp;years, my&nbsp;development workflow has changed tremendously. Whether learning from past problem solving experiences, studying software patterns, or&nbsp;learning from other developers, my&nbsp;view on&nbsp;workflow has changed.</p>
+<p>A&nbsp;brief personal coding history:</p>
+<p><strong>High School (2007):</strong> No OO, no tests, no code repos, no libraries. I&nbsp;was <nobr>re-inventing</nobr> the&nbsp;wheel wherever I&nbsp;went.</p>
+<p><strong>College:</strong> Object oriented design, basic patterns.</p>
+<p><strong>First Job:</strong> Libraries. Still developing on&nbsp;production code, haha…</p>
+<p><strong>Second Job:</strong> Started open source contributing. Used <abbr>SVN</abbr> (gross).</p>
+<p><strong>Current Job:</strong> Tests. Modular design patterns. Git.</p>
+<p>There it is, eight years of&nbsp;learning.</p>
+<p>I&nbsp;would like to&nbsp;share my&nbsp;current workflow, one that I&nbsp;use for&nbsp;almost all of&nbsp;my projects currently, and&nbsp;has served me well.</p>
+<h3>1. State the&nbsp;problem or&nbsp;idea</h3>
+<p>This is the&nbsp;first and&nbsp;most important step. You must clearly understand your problem or&nbsp;idea. This is <strong>not</strong> the&nbsp;time to&nbsp;think about implementation! What you are doing here is defining the&nbsp;input and&nbsp;expected output. Think of&nbsp;use cases your solution will be solving.</p>
+<h3>2. Design and&nbsp;Draw Solution</h3>
+<p>You should spend a&nbsp;lot of&nbsp;time on&nbsp;this one. Find a&nbsp;whiteboard, and&nbsp;get drawing. Define where the&nbsp;data is coming from, and&nbsp;where it is going. Draw how things are connected and&nbsp;what information will be sent between them. Think about the&nbsp;logic expressions you will need. If your data will need to&nbsp;be transformed, draw some examples. At&nbsp;this stage, you are writing down all your design ideas.</p>
+<h3>3. Modularize Design</h3>
+<p>Before you start on&nbsp;this one, unless you are lucky enough to&nbsp;have two white boards, take a&nbsp;picture of&nbsp;your original solution design. During this step, you are going to&nbsp;simplify and&nbsp;modularize your solution. Start by&nbsp;extracting functionality into independent modules. This allows them to&nbsp;have a&nbsp;clear purpose. What you are doing in&nbsp;this stage is breaking down larger problems into smaller problems. This has many great side effects including easier testability, reusability, and&nbsp;maintainability.</p>
+<h3>4. Create unit tests for&nbsp;modules</h3>
+<p>Let’s make sure the&nbsp;modules will work as&nbsp;expected after we implement them. Since you have the&nbsp;designs for&nbsp;clear and&nbsp;independent modules now, think about the&nbsp;required parameters of&nbsp;each module and&nbsp;their respective required results. Now write unit tests based on&nbsp;your module requirements.</p>
+<h3>5. Implement modules</h3>
+<p>This one should be straight forward. Implement modules which are validated by&nbsp;your units tests. You might be thinking I&nbsp;am a&nbsp;full on&nbsp;“Test Driven Development” dude by&nbsp;now. I’m not. I&nbsp;just picked up ideas from my&nbsp;peers at&nbsp;work and&nbsp;molded some of&nbsp;their philosophies into my&nbsp;development workflow. “Use only that which works, and&nbsp;take it from any place you can find it.”&nbsp;— Bruce Lee</p>
+<h3>6. Create use case tests</h3>
+<p>Now that you have your modules created and&nbsp;tested, let’s write use case tests. These will be <nobr>end-to</nobr>-end test scenarios which cover your entire solution. They will touch many of&nbsp;yours modules. That being said. I&nbsp;am an&nbsp;advocate of&nbsp;<strong>really really fast tests</strong>, so make sure you mock, stub, do whatever you need to&nbsp;do in&nbsp;order to&nbsp;<strong>not</strong> call actual outside services. That wastes time.</p>
+<h3>7. Tie together modules to&nbsp;implement solution</h3>
+<p>By&nbsp;the time you get to&nbsp;this step, you should definitely know how your modules should be connected, which coding patterns you will use, and&nbsp;the overall structure of&nbsp;the codebase. Just to&nbsp;point out, this is <strong>not a&nbsp;waterfall</strong> workflow, be agile! If you you need to&nbsp;step back in&nbsp;the process, do it, but <strong>follow the&nbsp;order</strong> of&nbsp;the stages. Do not implement code before you design and&nbsp;write the&nbsp;initial tests for&nbsp;it. Once your use case tests pass, your solution should be complete.</p>
+<p>There is my&nbsp;workflow. I&nbsp;would love to&nbsp;get some feedback, so please leave me some comments below.</p>
+<p>Thanks</p>
+</article></body></html>

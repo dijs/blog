@@ -1,0 +1,112 @@
+<!doctype html>
+<html><head><link rel="stylesheet" type="text/css" href="/css/post.css"/><link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.1.0/styles/default.min.css"/><link rel="icon" type="image/png" href="/public/favicon.png"/><meta name="viewport" content="width=device-width, initial-scale=1"/><title>Random Sentences</title></head><body><header><a href="/" class="back">« Back</a><h1>Random Sentences</h1></header><time>11/22/2014</time><article><p>Recently, I&nbsp;have been trying to&nbsp;learn the&nbsp;Hungarian language. After memorizing a&nbsp;bunch of&nbsp;words, just repeating them to&nbsp;study got boring. I&nbsp;wanted to&nbsp;write a&nbsp;program which randomly created sentences I&nbsp;could use to&nbsp;practice with. Of&nbsp;course, the&nbsp;best practice would be to&nbsp;go find a&nbsp;native speaker near me, but I&nbsp;wanted a&nbsp;challenge…</p>
+<p><strong>Hypothesis</strong></p>
+<p>In&nbsp;order to&nbsp;generate random sentences, I&nbsp;needed some kind of&nbsp;sentence building logic. I&nbsp;have used Markov Chains to&nbsp;build random names in&nbsp;the past, so why would it not work for&nbsp;sentences?</p>
+<p><strong>Data</strong></p>
+<p>First! I&nbsp;needed data. Thank God for&nbsp;<a href="http://www.gutenberg.org/">http://www.gutenberg.org/</a>. This saved me loads of&nbsp;time finding a&nbsp;bunch of&nbsp;random text.</p>
+<p><strong>Training</strong></p>
+<p>This was a&nbsp;lot of&nbsp;data, so I&nbsp;did not want to&nbsp;load it all in&nbsp;memory at&nbsp;once. Let's use Stream's!</p>
+<p>I&nbsp;streamed the&nbsp;huge text data file and&nbsp;counted all the&nbsp;instances of&nbsp;each <a href="http://en.wikipedia.org/wiki/Bigram">bigram</a> and&nbsp;<a href="http://en.wikipedia.org/wiki/Trigram">trigram</a>. After counting, I&nbsp;sorted each word's adjacent neighbor by&nbsp;the number of&nbsp;instances. This gave me a&nbsp;list of&nbsp;words and&nbsp;their most used adajcent bigram and&nbsp;trigram neighbor.</p>
+<p><strong>Generation</strong></p>
+<p>With this Markov "link" data, I&nbsp;was able to&nbsp;generate rudimentary sentences. Nothing made sense, but it was easy to&nbsp;read.</p>
+<p>These sentences are not logical, they are built by&nbsp;choosing what word should statistically come next.</p>
+<p><strong>Ideas for&nbsp;the future:</strong></p>
+<ul>
+<li>Extract/Analyze subject, verb, object in&nbsp;each sentence</li>
+<li>Use neural networks for&nbsp;training <em>next</em> word</li>
+</ul>
+<p><a href="http://www.richardvanderdys.com/projects/random-sentences">Try it out!</a></p>
+<p><strong>Code</strong></p>
+<pre><code class="language-js lang-javascript"><span class="hljs-comment">//Create Markov links</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">createLinks</span>(<span class="hljs-params">input, output, n</span>) </span>{
+	<span class="hljs-keyword">var</span> links = {};
+
+	<span class="hljs-keyword">if</span> (!n) {
+		n = <span class="hljs-number">2</span>; <span class="hljs-comment">// bigram by default</span>
+	}
+
+	<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">trainSentence</span>(<span class="hljs-params">sentence</span>) </span>{
+		NGrams.ngrams(sentence, n).forEach(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">gram</span>) </span>{
+			<span class="hljs-keyword">var</span> word = gram[<span class="hljs-number">0</span>];
+			<span class="hljs-keyword">var</span> neighbor = gram[n - <span class="hljs-number">1</span>];
+			<span class="hljs-keyword">if</span> (!links[word]) {
+				links[word] = {};
+			}
+			<span class="hljs-keyword">if</span> (!links[word][neighbor]) {
+				links[word][neighbor] = <span class="hljs-number">0</span>;
+			}
+			links[word][neighbor] ++;
+		});
+	}
+
+	<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">read</span>(<span class="hljs-params"></span>) </span>{
+		<span class="hljs-keyword">var</span> buffer;
+		<span class="hljs-keyword">while</span> ((buffer = stream.read())) {
+			buffer.toLowerCase().split(<span class="hljs-regexp">/\./g</span>).forEach(trainSentence);
+		}
+	}
+
+	<span class="hljs-keyword">var</span> stream = fs.createReadStream(input, {
+		encoding: <span class="hljs-string">'utf8'</span>
+	});
+
+	stream.on(<span class="hljs-string">'readable'</span>, read);
+
+	stream.once(<span class="hljs-string">'end'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
+
+		<span class="hljs-keyword">var</span> sortedLinks = {};
+		<span class="hljs-keyword">var</span> keys = <span class="hljs-built_in">Object</span>.keys(links);
+
+		keys.forEach(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">key</span>) </span>{
+			<span class="hljs-keyword">var</span> words = <span class="hljs-built_in">Object</span>.keys(links[key]);
+			sortedLinks[key] = _.sortBy(words, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">word</span>) </span>{
+				<span class="hljs-keyword">return</span> links[key][word];
+			});
+		});
+
+		fs.writeFile(output, <span class="hljs-built_in">JSON</span>.stringify(sortedLinks, <span class="hljs-literal">null</span>, <span class="hljs-string">'\t'</span>));
+	});
+}
+</code></pre>
+<pre><code class="language-javascript lang-javascript"><span class="hljs-comment">//Generate Sentence</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">generateSentenceMark2</span>(<span class="hljs-params">bigramInput, trigramInput, length, k, dictionary, starter</span>) </span>{
+
+	<span class="hljs-keyword">var</span> bigrams = <span class="hljs-built_in">require</span>(bigramInput);
+	<span class="hljs-keyword">var</span> trigrams = <span class="hljs-built_in">require</span>(trigramInput);
+
+	<span class="hljs-keyword">var</span> current = starter || _.sample(dictionary || <span class="hljs-built_in">Object</span>.keys(bigrams));
+	<span class="hljs-keyword">var</span> last;
+
+	<span class="hljs-keyword">var</span> sentence = [current];
+
+	<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">dictionaryContains</span>(<span class="hljs-params">word</span>) </span>{
+		<span class="hljs-keyword">return</span> _.contains(dictionary, word);
+	}
+
+	<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getNeighbor</span>(<span class="hljs-params">links, word</span>) </span>{
+		<span class="hljs-keyword">var</span> neighbors = links[word];
+		<span class="hljs-keyword">if</span>(dictionary) {
+			neighbors = neighbors.filter(dictionaryContains);
+		}
+		<span class="hljs-comment">// neighbors might be null or empty...</span>
+		<span class="hljs-keyword">var</span> neighbor = neighbors[<span class="hljs-built_in">Math</span>.ceil(neighbors.length * <span class="hljs-built_in">Math</span>.random() * k)];
+		<span class="hljs-comment">// Go through all of the words if word doesnt have neighbors</span>
+		<span class="hljs-keyword">var</span> i = <span class="hljs-number">0</span>;
+		<span class="hljs-keyword">while</span> (!_.has(links, neighbor) &amp;&amp; i &lt; neighbors.length) {
+			neighbor = neighbors[i++];
+		}
+		<span class="hljs-keyword">return</span> neighbor;
+	}
+
+	<span class="hljs-comment">// Generate Neighbors</span>
+	_(length - <span class="hljs-number">1</span>).times(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">i</span>) </span>{
+		<span class="hljs-keyword">var</span> neighbor = i % <span class="hljs-number">2</span> === <span class="hljs-number">0</span> ? getNeighbor(bigrams, current) : getNeighbor(trigrams, last);
+		last = current;
+		current = neighbor;
+		sentence.push(current);
+	});
+
+	<span class="hljs-keyword">return</span> sentence.join(<span class="hljs-string">' '</span>);
+}
+</code></pre>
+</article></body></html>

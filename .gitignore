@@ -1,6 +1,5 @@
 .DS_Store
 node_modules
-build
 modules-dist
 TODO.md
 npm-debug.log

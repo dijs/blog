@@ -1,0 +1,27 @@
+<!doctype html>
+<html><head><link rel="stylesheet" type="text/css" href="/css/post.css"/><link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.1.0/styles/default.min.css"/><link rel="icon" type="image/png" href="/public/favicon.png"/><meta name="viewport" content="width=device-width, initial-scale=1"/><title>Stupid Mario</title></head><body><header><a href="/" class="back">« Back</a><h1>Stupid Mario</h1></header><time>12/01/2014</time><article><p>I&nbsp;have seen a&nbsp;bunch of&nbsp;neural network articles around Hacker News lately. The&nbsp;way I&nbsp;boiled it down was: if you could simplify a&nbsp;problem and&nbsp;solution down to&nbsp;a finite number of&nbsp;inputs and&nbsp;a binary output, you could train a&nbsp;network to&nbsp;solve that problem on&nbsp;its own.</p>
+<p>I&nbsp;used to&nbsp;do a&nbsp;lot of&nbsp;Mario speed runs in&nbsp;high school. I&nbsp;was never any good, but to&nbsp;this day that is the&nbsp;only way I&nbsp;can play Mario now. It has been ingrained into my&nbsp;muscle memory.</p>
+<p>What if I&nbsp;taught a&nbsp;neural network how to&nbsp;play Mario?</p>
+<p><strong>Hypothesis</strong></p>
+<p>Starting simple. I&nbsp;just want to&nbsp;see if I&nbsp;can train a&nbsp;network to&nbsp;<abbr>NOT</abbr> <abbr>DIE</abbr>. I&nbsp;will ask the&nbsp;network when to&nbsp;jump throughout the&nbsp;level. After so many experiences dying where he should jump, hopefully he will learn to&nbsp;jump.</p>
+<p><strong>Setup</strong></p>
+<p>I&nbsp;used the&nbsp;fantastic <a href="https://fir.sh/projects/jsnes/"><abbr>JSNES</abbr></a> to&nbsp;facilitate the&nbsp;game itself. I&nbsp;was able to&nbsp;easily grab the&nbsp;data I&nbsp;needed directly from the&nbsp;emulator's memory. I&nbsp;found this great <a href="http://datacrystal.romhacking.net/wiki/Super_Mario_Bros.:RAM_map">map</a> that made it easy to&nbsp;find the&nbsp;exact variables I&nbsp;used for&nbsp;training and&nbsp;event detection.</p>
+<p>The&nbsp;next part was the&nbsp;brain itself.</p>
+<p>I&nbsp;tried quite a&nbsp;few big open source neural network Javascript libraries, but due to&nbsp;development issues, I&nbsp;decided to&nbsp;just use a&nbsp;simple perceptron function.</p>
+<p><strong>Training</strong></p>
+<p>I&nbsp;wanted to&nbsp;training to&nbsp;be just like a&nbsp;human, visual. So my&nbsp;training input was a&nbsp;normalized frame buffer which I&nbsp;converted to&nbsp;greyscale for&nbsp;ease of&nbsp;use with the&nbsp;perceptron.</p>
+<p>The&nbsp;output would be if Mario needed to&nbsp;jump right after that frame.</p>
+<p>I&nbsp;simply trained the&nbsp;perceptron by&nbsp;detecting when Mario had died and&nbsp;used the&nbsp;previous buffer.</p>
+<p>Automating the&nbsp;game play was the&nbsp;trickiest part. I&nbsp;had to&nbsp;detect game overs, collision deaths, and&nbsp;pit fall deaths, and&nbsp;automate Mario's controls.</p>
+<p><strong>Outcome</strong></p>
+<p>No, I&nbsp;do not have a&nbsp;perfect Mario player yet… that is why I&nbsp;titled this post <em>Stupid</em> Mario.</p>
+<p>It is hard to&nbsp;truly tell if a&nbsp;network is learning until it makes sufficient progress.</p>
+<p><a href="http://www.richardvanderdys.com/projects/stupid-mario">Try it out!</a></p>
+<p><strong>Future Ideas</strong></p>
+<ul>
+<li>Use more events for&nbsp;training</li>
+<li>Save/Load network data</li>
+<li>Use a&nbsp;big name network library</li>
+<li>Other games</li>
+</ul>
+</article></body></html>

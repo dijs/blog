@@ -16,12 +16,13 @@ export default function({posts}) {
   return <html>
     <head>
       <link rel='stylesheet' type='text/css' href='css/index.css' />
+      <link rel="icon" type="image/png" href="public/favicon.png" />
       <meta name='viewport' content='width=device-width, initial-scale=1' />
       <title>Blog</title>
     </head>
     <body>
       <header>
-        <img src='/public/avatar.svg' />
+        <img src='public/avatar.svg' />
         <h1>Richard <span>van der Dys III</span></h1>
         <h2>Lessons Learned</h2>
       </header>

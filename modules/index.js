@@ -1,7 +1,7 @@
 import React from 'react'
 
-function renderPost({title, date, snippet, filename}) {
-  const path = filename.replace(/md$/, 'html')
+function renderPost({title, date, snippet, paths}) {
+  const path = 'posts/' + paths.name + '.html'
   const html = {__html: snippet.toString()}
   return <div className='post'>
     <h2>

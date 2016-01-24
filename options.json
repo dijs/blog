@@ -19,17 +19,8 @@
   "sass": {
     "outputDir": "css/"
   },
-  "watch": {
-    "paths": {
-      "${source}/**/*": true
-    },
-    "livereload": true
-  },
   "markdown": {
     "html": true,
     "linkify": true
-  },
-  "express": {
-    "port": 3001
   }
 }

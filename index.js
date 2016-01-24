@@ -2,20 +2,20 @@ var metalsmith = require('metalsmith');
 var markdown = require('metalsmith-markdownit');
 var collections = require('metalsmith-collections');
 var react = require('metalsmith-react').default;
-var watch = require('metalsmith-watch');
-var express = require('metalsmith-express');
 var snippet = require('metalsmith-snippet');
 var typography = require('metalsmith-typography');
 var sass = require('metalsmith-sass');
 var codeHighlight = require('metalsmith-code-highlight');
 var static = require('metalsmith-static');
+var paths = require('metalsmith-paths')
 var options = require('./options.json');
 
 metalsmith(__dirname)
   .use(static())
-  .use(express(options.express))
-  .use(watch(options.watch))
   .use(collections(options.collection))
+  .use(paths({
+    property: "paths"
+  }))
   .use(markdown(options.markdown))
   .use(typography())
   .use(codeHighlight())

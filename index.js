@@ -8,10 +8,12 @@ var sass = require('metalsmith-sass');
 var codeHighlight = require('metalsmith-code-highlight');
 var static = require('metalsmith-static');
 var paths = require('metalsmith-paths')
+var drafts = require('metalsmith-drafts');
 var options = require('./options.json');
 
 metalsmith(__dirname)
   .use(static())
+  .use(drafts())
   .use(collections(options.collection))
   .use(paths({
     property: "paths"

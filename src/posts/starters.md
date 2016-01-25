@@ -1,7 +1,7 @@
 ---
 title: Starters
 layout: post
-date: January 23, 2016
+date: 01/23/2016
 ---
 
 Ever been under pressure to throw up a react/redux application in 20 minutes?

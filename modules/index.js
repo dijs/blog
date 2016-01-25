@@ -1,18 +1,22 @@
 import React from 'react'
+import sortBy from 'lodash/sortBy'
+import moment from 'moment'
 
 function renderPost({title, date, snippet, paths}) {
   const path = 'posts/' + paths.name + '.html'
   const html = {__html: snippet.toString()}
+  const dateFormatted = moment(date, 'MM/DD/YYYY').format('MMMM DD, YYYY')
   return <div className='post'>
     <h2>
       <a href={path}>{title}</a>
     </h2>
-    <time>{date}</time>
+    <time>{dateFormatted}</time>
     <div className='snippet' dangerouslySetInnerHTML={html} />
   </div>
 }
 
 export default function({posts}) {
+  const sortedPosts = sortBy(posts, post => -moment(post.date, 'MM/DD/YYYY').valueOf())
   return <html>
     <head>
       <link rel='stylesheet' type='text/css' href='css/index.css' />
@@ -27,7 +31,7 @@ export default function({posts}) {
         <h2>Lessons Learned</h2>
       </header>
       <div className='posts'>
-      {posts.map(renderPost)}
+      {sortedPosts.map(renderPost)}
       </div>
     </body>
   </html>

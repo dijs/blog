@@ -7,7 +7,7 @@ export default function(props) {
   const dateFormatted = moment(date, 'MM/DD/YYYY').format('MMMM DD, YYYY')
   return <html>
     <head>
-      <link rel='stylesheet' type='text/css' href='//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.1.0/styles/default.min.css' />
+      <link rel='stylesheet' type='text/css' href='//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.1.0/styles/zenburn.min.css' />
       <link rel='stylesheet' type='text/css' href='../css/post.css' />
       <link rel="icon" type="image/png" href="../public/favicon.png" />
       <meta name='viewport' content='width=device-width, initial-scale=1' />

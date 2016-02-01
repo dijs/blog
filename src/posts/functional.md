@@ -17,7 +17,10 @@ Here is a simple example: *Let's create a function which computes the sum of a l
 
 Here is an example which uses extra dangerous state (**DON'T DO THIS!**):
 ```js
-let sum = 0 // This is the external data which could be affected by other code in this context
+// This is the external data which
+// could be affected by other code
+// in this context
+let sum = 0
 function computeSum (numbers) {
   numbers.forEach(n => sum += n)
 }
@@ -29,7 +32,9 @@ Now, a better example, using a more functional technique:
 
 ```js
 const bySum = (sum, n) => sum + n
-const sum = numbers => numbers.reduce(bySum) // This is safe from any external code
+// This is safe from any
+// external code
+const sum = numbers => numbers.reduce(bySum)
 const result = sum([1,2,3])
 ```
 

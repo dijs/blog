@@ -20,7 +20,7 @@ export default function({posts}) {
   return <html>
     <head>
       <link rel='stylesheet' type='text/css' href='css/index.css' />
-      <link rel="icon" type="image/png" href="public/favicon.png" />
+      <link rel='icon' type='image/png' href='public/favicon.png' />
       <meta name='viewport' content='width=device-width, initial-scale=1' />
       <title>Blog</title>
     </head>

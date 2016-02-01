@@ -9,7 +9,7 @@
     "dev": "npm run build && npm start && npm run server",
     "build": "babel modules --out-dir modules-dist/",
     "watch": "nodemon .",
-    "deploy": "npm run build && npm start && git subtree split --prefix build -b gh-pages && git push -f origin gh-pages:gh-pages && git branch -D gh-pages"
+    "deploy": "npm run build && npm start && git add . && git commit -m \"Deploy\" && git subtree split --prefix build -b gh-pages && git push -f origin gh-pages:gh-pages && git branch -D gh-pages"
   },
   "author": "Richard van der Dys",
   "license": "MIT",

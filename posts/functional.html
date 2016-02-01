@@ -5,7 +5,10 @@
 <h3>What do I&nbsp;mean by&nbsp;this?</h3>
 <p>Here is a&nbsp;simple example: <em>Let's create a&nbsp;function which computes the&nbsp;sum of&nbsp;a list of&nbsp;numbers.</em></p>
 <p>Here is an&nbsp;example which uses extra dangerous state (<strong><abbr>DON</abbr>'T DO <abbr>THIS</abbr>!</strong>):</p>
-<pre><code class="language-js lang-nimrod"><span class="hljs-keyword">let</span> sum = <span class="hljs-number">0</span> // <span class="hljs-type">This</span> <span class="hljs-keyword">is</span> the external data which could be affected by other code <span class="hljs-keyword">in</span> this context
+<pre><code class="language-js lang-nimrod">// <span class="hljs-type">This</span> <span class="hljs-keyword">is</span> the external data which
+// could be affected by other code
+// <span class="hljs-keyword">in</span> this context
+<span class="hljs-keyword">let</span> sum = <span class="hljs-number">0</span>
 function computeSum (numbers) {
   numbers.forEach(n =&gt; sum += n)
 }
@@ -14,7 +17,9 @@ computeSum([<span class="hljs-number">1</span>,<span class="hljs-number">2</span
 </code></pre>
 <p>Now, a&nbsp;better example, using a&nbsp;more functional technique:</p>
 <pre><code class="language-js lang-nimrod"><span class="hljs-keyword">const</span> bySum = (sum, n) =&gt; sum + n
-<span class="hljs-keyword">const</span> sum = numbers =&gt; numbers.reduce(bySum) // <span class="hljs-type">This</span> <span class="hljs-keyword">is</span> safe <span class="hljs-keyword">from</span> <span class="hljs-type">any</span> external code
+// <span class="hljs-type">This</span> <span class="hljs-keyword">is</span> safe <span class="hljs-keyword">from</span> <span class="hljs-type">any</span>
+// external code
+<span class="hljs-keyword">const</span> sum = numbers =&gt; numbers.reduce(bySum)
 <span class="hljs-keyword">const</span> <span class="hljs-literal">result</span> = sum([<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>])
 </code></pre>
 <p>With functional programming, we can trust our code more. Functional code is more maintainable, predictable, doesn't mutate other code, can be reused, smaller, and&nbsp;sometimes more readable (depending on&nbsp;who is reading it).</p>

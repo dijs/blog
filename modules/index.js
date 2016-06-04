@@ -2,7 +2,8 @@ import React from 'react'
 import sortBy from 'lodash/sortBy'
 import moment from 'moment'
 
-function renderPost({title, date, snippet, paths}) {
+function renderPost(post) {
+  const {title, date, snippet, paths} = post;
   const path = 'posts/' + paths.name + '.html'
   const html = {__html: snippet.toString()}
   const dateFormatted = moment(date, 'MM/DD/YYYY').format('MMMM DD, YYYY')

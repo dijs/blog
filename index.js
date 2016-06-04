@@ -9,9 +9,11 @@ var codeHighlight = require('metalsmith-code-highlight');
 var static = require('metalsmith-static');
 var paths = require('metalsmith-paths')
 var drafts = require('metalsmith-drafts');
+var feed = require('metalsmith-feed');
 var options = require('./options.json');
 
 metalsmith(__dirname)
+  .metadata(options.metadata)
   .use(static())
   .use(drafts())
   .use(collections(options.collection))
@@ -24,6 +26,7 @@ metalsmith(__dirname)
   .use(snippet(options.snippet))
   .use(react(options.react))
   .use(sass(options.sass))
+  .use(feed(options.feed))
   .build(function (err) {
     if (err) throw err;
   });

@@ -1,4 +1,11 @@
 {
+  "metadata": {
+    "site": {
+      "title": "Coding Blog",
+      "url": "http://dijs.github.io/blog/",
+      "author": "Richard van der Dys III"
+    }
+  },
   "react": {
     "pattern": "**/*.html",
     "templatesPath": "modules-dist",
@@ -22,5 +29,8 @@
   "markdown": {
     "html": true,
     "linkify": true
+  },
+  "feed": {
+    "collection": "posts"
   }
 }

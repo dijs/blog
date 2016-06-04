@@ -34,6 +34,7 @@
     "metalsmith-typography": "^0.1.1",
     "moment": "^2.11.1",
     "nodemon": "^1.8.1",
-    "react": "^0.14.7"
+    "react": "^0.14.7",
+    "reading-time": "^1.1.0"
   }
 }

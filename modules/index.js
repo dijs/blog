@@ -1,17 +1,22 @@
 import React from 'react'
 import sortBy from 'lodash/sortBy'
 import moment from 'moment'
+import readingTime from 'reading-time'
 
 function renderPost(post) {
   const {title, date, snippet, paths} = post;
   const path = 'posts/' + paths.name + '.html'
   const html = {__html: snippet.toString()}
   const dateFormatted = moment(date, 'MM/DD/YYYY').format('MMMM DD, YYYY')
+  const readingStats = readingTime(post.contents);
   return <div className='post'>
     <h2>
       <a href={path}>{title}</a>
     </h2>
     <time>{dateFormatted}</time>
+    <div className='reading-time'>
+      <b>{readingStats.text}</b>
+    </div>
     <div className='snippet' dangerouslySetInnerHTML={html} />
   </div>
 }

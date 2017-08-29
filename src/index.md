@@ -1,4 +1,0 @@
----
-template: index
-index: true
----

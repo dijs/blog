@@ -10,7 +10,7 @@
     "build": "babel modules --out-dir modules-dist/",
     "watch": "nodemon .",
     "prepare": "npm run build && npm start",
-    "deploy": "node publish"
+    "deploy": "gh-pages -d build"
   },
   "author": "Richard van der Dys",
   "license": "MIT",

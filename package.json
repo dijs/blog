@@ -19,7 +19,7 @@
     "babel-preset-react": "^6.3.13",
     "http-server": "^0.8.5",
     "lodash": "^4.0.0",
-    "metalsmith": "^2.1.0",
+    "metalsmith": "^2.3.0",
     "metalsmith-code-highlight": "0.0.3",
     "metalsmith-collections": "^0.7.0",
     "metalsmith-drafts": "0.0.1",

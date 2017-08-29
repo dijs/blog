@@ -9,7 +9,7 @@ function renderPost(post) {
   const html = {__html: snippet.toString()}
   const dateFormatted = moment(date, 'MM/DD/YYYY').format('MMMM DD, YYYY')
   const readingStats = readingTime(post.contents);
-  return <div className='post'>
+  return <div className='post' key={title}>
     <h2>
       <a href={path}>{title}</a>
     </h2>

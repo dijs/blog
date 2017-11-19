@@ -1,0 +1,28 @@
+<!doctype html>
+<html><head><link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.1.0/styles/zenburn.min.css"/><link rel="stylesheet" type="text/css" href="../css/post.css"/><link rel="icon" type="image/png" href="../public/favicon.png"/><meta name="viewport" content="width=device-width, initial-scale=1"/><title>Homemade Thing Recognizer</title></head><body><header><a href="../" class="back">« Back</a><h1>Homemade Thing Recognizer</h1></header><time>November 19, 2017</time><article><p>When I&nbsp;was in&nbsp;college (around 2010), I&nbsp;worked with OpenCV and&nbsp;facial detection quite a&nbsp;bit, I&nbsp;always found it very interesting. I&nbsp;wanted to&nbsp;build a&nbsp;recognition platform on&nbsp;top of&nbsp;this, but I&nbsp;quickly determined I&nbsp;was in&nbsp;<strong>way</strong> over my&nbsp;head…</p>
+<p>Neural networks have come a&nbsp;long way since then.</p>
+<p>Since moving into our home, I&nbsp;have been trying to&nbsp;find ways of&nbsp;gathering data. Temperatures inside and&nbsp;outside, moisture levels in&nbsp;the garden, todo list data, camera systems with motion detection, etc. I&nbsp;have been doing this in&nbsp;the hope that one day, I&nbsp;can create a&nbsp;neural networks to&nbsp;help with things around the&nbsp;house.</p>
+<p>Recently, I&nbsp;have had a&nbsp;breakthrough in&nbsp;this area.</p>
+<p>After noticing that I&nbsp;was <em>accidentally</em> storing hundreds of&nbsp;gigabytes of&nbsp;motion detection videos, I&nbsp;realized the&nbsp;treasure this could be!</p>
+<h2>Finding the&nbsp;interesting bits</h2>
+<p>Since I&nbsp;peruse the&nbsp;tech blogs every day, I&nbsp;remembered seeing some new work in&nbsp;the image tagging world. After some searching, I&nbsp;found it again, <a href="https://pjreddie.com/darknet/yolo/"><abbr>YOLO</abbr></a>. After building this library, downloading a&nbsp;previously trained model, and&nbsp;learning a&nbsp;bit of&nbsp;python, I&nbsp;was labeling objects in&nbsp;my videos!</p>
+<p>At&nbsp;first, I&nbsp;naively thought there was no way this could work for&nbsp;my use case. Each tag took around 30 seconds to&nbsp;calculate and&nbsp;I was potentially going to&nbsp;have thousands of&nbsp;frames thrown at&nbsp;this thing.</p>
+<p>NO. I&nbsp;went a&nbsp;<strong>much</strong> simpler route that has bene working well.</p>
+<h2>Only a&nbsp;few frames</h2>
+<p>I&nbsp;decided there was no reason to&nbsp;analyze entire videos worth of&nbsp;frames. My&nbsp;motion detection was already doing the&nbsp;hard work for&nbsp;me. I&nbsp;decided to&nbsp;break out <strong>ffmpeg</strong> and&nbsp;extract a&nbsp;few frames of&nbsp;the detection video.</p>
+<p>This greatly simplified my&nbsp;problem. Now all I&nbsp;had to&nbsp;do was tag a&nbsp;few images for&nbsp;each detection video.</p>
+<p>I&nbsp;quickly wrote a&nbsp;simple python server that accepted an&nbsp;<abbr>POST</abbr> request with an&nbsp;image, and&nbsp;used <abbr>YOLO</abbr> to&nbsp;spit out a&nbsp;list of&nbsp;labels. Each which had bounding box data… this was getting exciting.</p>
+<h2>Tagging</h2>
+<p>Just for&nbsp;fun, I&nbsp;whipped up a&nbsp;quick react app which allowed me to&nbsp;<em>swipe</em> through all my&nbsp;tagged objects and&nbsp;give them <strong>real</strong> labels.</p>
+<h2>Personal Recognition</h2>
+<p>To&nbsp;be honest, the&nbsp;labels were nice, but those were not what I&nbsp;was after. I&nbsp;wanted to&nbsp;know when my&nbsp;wife walks through the&nbsp;gate, if my&nbsp;dog is barking at&nbsp;the fence, or&nbsp;if a&nbsp;friend comes over. That was my&nbsp;goal.</p>
+<p>I&nbsp;went back to&nbsp;a library I&nbsp;had tried before and&nbsp;failed with. <a href="http://cs.stanford.edu/people/karpathy/convnetjs/docs.html">ConvNetJS</a> I&nbsp;had remembered he made a&nbsp;demo which could learn to&nbsp;recognize objects from a&nbsp;dataset with 90% accuracy after just a&nbsp;few minutes.</p>
+<p>Here is the&nbsp;<a href="http://cs.stanford.edu/people/karpathy/convnetjs/demo/cifar10.html">demo</a>.</p>
+<p>I&nbsp;now had a&nbsp;large amount of&nbsp;raw training data, and&nbsp;a potential library to&nbsp;use.</p>
+<p>I&nbsp;knew my&nbsp;raw data needed to&nbsp;be cleaned up and&nbsp;normalized for&nbsp;it to&nbsp;run through a&nbsp;network. I&nbsp;kept it simple, I&nbsp;<strong>cropped</strong> out the&nbsp;detected boundary of&nbsp;the image then used a&nbsp;<strong>contain</strong> algorithm to&nbsp;resize them to&nbsp;64x64. In&nbsp;the future I&nbsp;want to&nbsp;also save a&nbsp;horizontal flipped version of&nbsp;the image so I&nbsp;can double my&nbsp;training data.</p>
+<p>It took a&nbsp;fews day to&nbsp;figure out ConvNetJS. At&nbsp;first I&nbsp;was only running the&nbsp;data through once per image and&nbsp;expecting it to&nbsp;work 🤦.</p>
+<p>I&nbsp;went back to&nbsp;the demo and&nbsp;realized he was throwing random input images at&nbsp;the network and&nbsp;teaching it the&nbsp;correct label, while minimizing the&nbsp;"classification loss". I&nbsp;coded up something very similar, but without the&nbsp;fancy graphs. It was just a&nbsp;terminal app that took all my&nbsp;normalized images and&nbsp;personal labels and&nbsp;trained them randomly over a&nbsp;set amount of&nbsp;iterations.</p>
+<p>After tweaking the&nbsp;network training configuration a&nbsp;few times, my&nbsp;training normally takes around 30 mins, and&nbsp;performs quite well.</p>
+<p>I&nbsp;now get emails throughout the&nbsp;day of&nbsp;<strong>recognized</strong> people, dogs, cars, etc.</p>
+<p>Still more work to&nbsp;do, but I&nbsp;am very happy with where it is right now.</p>
+</article></body></html>

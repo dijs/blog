@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Coding Blog]]></title><description><![CDATA[Coding Blog]]></description><link>http://dijs.github.io/blog/</link><generator>metalsmith-feed</generator><lastBuildDate>Sun, 19 Nov 2017 09:22:12 GMT</lastBuildDate><atom:link href="http://dijs.github.io/blog/rss.xml" rel="self" type="application/rss+xml"/><author><![CDATA[Richard van der Dys III]]></author><item><title><![CDATA[Financial Independence with Mint]]></title><description><![CDATA[<!doctype html>
+<rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Coding Blog]]></title><description><![CDATA[Coding Blog]]></description><link>http://dijs.github.io/blog/</link><generator>metalsmith-feed</generator><lastBuildDate>Thu, 01 Mar 2018 09:29:40 GMT</lastBuildDate><atom:link href="http://dijs.github.io/blog/rss.xml" rel="self" type="application/rss+xml"/><author><![CDATA[Richard van der Dys III]]></author><item><title><![CDATA[Financial Independence with Mint]]></title><description><![CDATA[<!doctype html>
 <html><head><link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.1.0/styles/zenburn.min.css"/><link rel="stylesheet" type="text/css" href="../css/post.css"/><link rel="icon" type="image/png" href="../public/favicon.png"/><meta name="viewport" content="width=device-width, initial-scale=1"/><title>Financial Independence with Mint</title></head><body><header><a href="../" class="back">« Back</a><h1>Financial Independence with Mint</h1></header><time>April 30, 2016</time><article><p>Learning how to&nbsp;handle money is an&nbsp;important part of&nbsp;growing up. The&nbsp;sooner we can learn and&nbsp;apply good financial skills, the&nbsp;easier the&nbsp;rest of&nbsp;our financial life will be.</p>
 <p>I&nbsp;have been using Mint for&nbsp;over five years now. It is now core part of&nbsp;our budgeting and&nbsp;financial workflow.</p>
 <p>Recently came across <a href="http://www.madfientist.com/">madFIentist</a> and&nbsp;was blown away by&nbsp;the fact that he not only writes great financial blog posts, but also builds tools to&nbsp;go along with them. That is something I&nbsp;can get behind.</p>
@@ -21,7 +21,48 @@
 <p>Not sure if this will work, but I&nbsp;will find out when the&nbsp;parts arrive!</p>
 <p>There is a&nbsp;lot more to&nbsp;this than I&nbsp;thought, but things are slowly coming together.</p>
 <p>Next part coming soon.</p>
-</article></body></html>]]></description><guid isPermaLink="false">Vacbot Part 1</guid><dc:creator><![CDATA[Richard van der Dys III]]></dc:creator><pubDate>Sat, 26 Mar 2016 22:00:00 GMT</pubDate></item><item><title><![CDATA[Flashcards]]></title><description><![CDATA[<!doctype html>
+</article></body></html>]]></description><guid isPermaLink="false">Vacbot Part 1</guid><dc:creator><![CDATA[Richard van der Dys III]]></dc:creator><pubDate>Sat, 26 Mar 2016 22:00:00 GMT</pubDate></item><item><title><![CDATA[Ares Game | Part 1]]></title><description><![CDATA[<!doctype html>
+<html><head><link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.1.0/styles/zenburn.min.css"/><link rel="stylesheet" type="text/css" href="../css/post.css"/><link rel="icon" type="image/png" href="../public/favicon.png"/><meta name="viewport" content="width=device-width, initial-scale=1"/><title>Ares Game | Part 1</title></head><body><header><a href="../" class="back">« Back</a><h1>Ares Game | Part 1</h1></header><time>March 01, 2018</time><article><h4>Intro</h4>
+<p>This is the&nbsp;start of&nbsp;what I&nbsp;hope to&nbsp;be a&nbsp;long story.</p>
+<p>I&nbsp;have been wanting to&nbsp;make a&nbsp;proper open world mmo rpg for&nbsp;a very long time. I&nbsp;have started two or&nbsp;three times in&nbsp;the past, but after a&nbsp;few weeks of&nbsp;work and&nbsp;failures, the&nbsp;projects fizzled.</p>
+<p>This time, I&nbsp;am trying to&nbsp;be more realistic. Instead of&nbsp;overwhelming myself with complex features early on, I&nbsp;am starting with the&nbsp;basics, and&nbsp;will build upon those.</p>
+<p>To&nbsp;challenge myself even more, I&nbsp;will be using C++…</p>
+<p>I&nbsp;have only ever created one game in&nbsp;C before and&nbsp;many parts of&nbsp;C++ are a&nbsp;mystery to&nbsp;me, but through this project, I&nbsp;have already learned quite a&nbsp;lot, and&nbsp;I hope to&nbsp;learn much more.</p>
+<p>Because this game will be very open, I&nbsp;am working on&nbsp;the different features of&nbsp;the game first, no storyline, no fancy graphics, etc.</p>
+<p>I&nbsp;want to&nbsp;start with the&nbsp;difficult parts first, then add in&nbsp;the details.</p>
+<h4>Parts of&nbsp;the game I&nbsp;have created so far:</h4>
+<ul>
+<li>Isometric 2D World Rendering (multiple layers)</li>
+<li>Simple creature/character rendering with movement animation</li>
+<li>Pathfinding / Viewport control</li>
+<li>Simple chat system</li>
+<li><abbr>NPC</abbr>'s to&nbsp;communicate with</li>
+<li>Naive multiplayer. Can currently exist in&nbsp;the same world, see each other, move around, and&nbsp;attack</li>
+<li>Mob nests and&nbsp;mob creatures which drop items</li>
+<li>Player inventory</li>
+<li>Simple combat system (works over network)</li>
+<li>Tilemap/World editor for&nbsp;creating and&nbsp;updating maps</li>
+<li>Skill trees</li>
+<li>Quests (only hunting quests currently)</li>
+<li>Keyboard shortcuts to&nbsp;use menus and&nbsp;skills (will customize later)</li>
+<li>Resource scavenging</li>
+<li>Item crafting using resources</li>
+</ul>
+<p>It seems like a&nbsp;lot… for&nbsp;me. But there is still so much to&nbsp;do.</p>
+<p>For&nbsp;my <abbr>ALPHA</abbr> version, I&nbsp;still want to&nbsp;have simple PvP, a&nbsp;vendor system, and&nbsp;player respawn working.</p>
+<p>I&nbsp;think with all these things working together, I&nbsp;can testing with other people and&nbsp;get a&nbsp;sense of&nbsp;what feels right and&nbsp;what I&nbsp;need to&nbsp;tweak.</p>
+<p>Like I&nbsp;said, no story or&nbsp;theme yet, but I&nbsp;wanted to&nbsp;share the&nbsp;main features that distinguish. Yes, I&nbsp;know none of&nbsp;these ideas are unique, but I&nbsp;hope used together properly, they will make an&nbsp;entertaining mmorpg.</p>
+<h4>Features:</h4>
+<ul>
+<li>Open world (walk <abbr>ANYWHERE</abbr>, I&nbsp;want to&nbsp;be able to&nbsp;get lost in&nbsp;the game 👍)</li>
+<li>Attack almost anything (not sure on&nbsp;this one yet. I&nbsp;want it to&nbsp;be realistic here, but could cause real problems for&nbsp;eary players. Maybe make this a&nbsp;option a&nbsp;player can <abbr>TURN</abbr> ON&nbsp;PvP, or&nbsp;a designated <abbr>AREA</abbr>)</li>
+<li>All items should be crafted / bought / sold by&nbsp;players (should force a&nbsp;real economy, must work together)</li>
+<li>Player should be able to&nbsp;build structures (not sure on&nbsp;limits yet)</li>
+<li>NO <abbr>LEVELS</abbr>. Improving in&nbsp;the game will be based on&nbsp;learning skills. You can learn skills from any profession in&nbsp;the game. The&nbsp;skill trees will be hierarchical</li>
+</ul>
+<p>That's it for&nbsp;now.</p>
+<p>We keep sharing thoughts and&nbsp;updates. And&nbsp;maybe a&nbsp;video demo soon!</p>
+</article></body></html>]]></description><guid isPermaLink="false">Ares Game | Part 1</guid><dc:creator><![CDATA[Richard van der Dys III]]></dc:creator><pubDate>Wed, 28 Feb 2018 22:00:00 GMT</pubDate></item><item><title><![CDATA[Flashcards]]></title><description><![CDATA[<!doctype html>
 <html><head><link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.1.0/styles/zenburn.min.css"/><link rel="stylesheet" type="text/css" href="../css/post.css"/><link rel="icon" type="image/png" href="../public/favicon.png"/><meta name="viewport" content="width=device-width, initial-scale=1"/><title>Flashcards</title></head><body><header><a href="../" class="back">« Back</a><h1>Flashcards</h1></header><time>December 31, 2014</time><article><p>Through my&nbsp;adventures of&nbsp;learning the&nbsp;Hungarian language, flashcards have been a&nbsp;great tool for&nbsp;memorizing new vocabulary. The&nbsp;best open source app I&nbsp;found was <a href="https://github.com/dae/anki">Anki</a>. The&nbsp;program was highly customizable and&nbsp;I found tons of&nbsp;free download-able decks online, full of&nbsp;study material. Downside was the&nbsp;mobile app. It was expensive and&nbsp;did not features I&nbsp;had seen on&nbsp;some other free flashcard apps.</p>
 <p>A&nbsp;friend drew my&nbsp;attention to&nbsp;<a href="https://itunes.apple.com/us/app/flashcards/id478986342?mt=8">Flashcards</a> by&nbsp;<abbr>NKO</abbr>, which was a&nbsp;very fun app to&nbsp;use and&nbsp;it was free!</p>
 <p>I&nbsp;wanted to&nbsp;use this new app for&nbsp;my mobile studying, but there was no way I&nbsp;was going to&nbsp;manually create hundreds of&nbsp;words…on&nbsp;my phone…</p>
@@ -505,12 +546,4 @@ it<span class="hljs-list">(<span class="hljs-quoted">'should</span> deposit', fu
 <p>In&nbsp;order to&nbsp;better understand and&nbsp;learn about mutation testing, I&nbsp;wanted to&nbsp;write my&nbsp;own Javascript mutation tester. I&nbsp;found one project for&nbsp;mutation testing in&nbsp;Javascript, and&nbsp;although I&nbsp;am normally a&nbsp;fan of&nbsp;"don't <nobr>re-invent</nobr> the&nbsp;wheel". In&nbsp;this case, the&nbsp;tool was only usable for&nbsp;<em>grunt</em> built projects. I&nbsp;wanted to&nbsp;create a&nbsp;more general use tool which was (build system) agnostic.</p>
 <p>Big hurdle I&nbsp;hit with writing this was actually "node-specifc" issues. While mutating source code, loading and&nbsp;running tests, I&nbsp;kept getting the&nbsp;same results. After hours of&nbsp;beating my&nbsp;head against the&nbsp;wall, I&nbsp;tried renaming the&nbsp;files before loading them in. Sure enough, it worked. So in&nbsp;doing this project I&nbsp;learned a&nbsp;bit more about how the&nbsp;node.js <strong>require</strong> method works and&nbsp;how it caches files.</p>
 <p><a href="https://github.com/dijs/profx">Here</a> is the&nbsp;project.</p>
-</article></body></html>]]></description><guid isPermaLink="false">Mutation Testing in Javascript</guid><dc:creator><![CDATA[Richard van der Dys III]]></dc:creator><pubDate>Sat, 28 Feb 2015 22:00:00 GMT</pubDate></item><item><title><![CDATA[Parsz]]></title><description><![CDATA[<!doctype html>
-<html><head><link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.1.0/styles/zenburn.min.css"/><link rel="stylesheet" type="text/css" href="../css/post.css"/><link rel="icon" type="image/png" href="../public/favicon.png"/><meta name="viewport" content="width=device-width, initial-scale=1"/><title>Parsz</title></head><body><header><a href="../" class="back">« Back</a><h1>Parsz</h1></header><time>January 25, 2015</time><article><p>I&nbsp;have been always been entranced with how much data is publicly available on&nbsp;the web. Although, most of&nbsp;the time the&nbsp;data is not directly usable for&nbsp;other purposes than reading. With so many <abbr>HTML</abbr> parsing libraries out there, it is common practice to&nbsp;build an&nbsp;application for&nbsp;a particular site and&nbsp;a specific data set. Parsz tries to&nbsp;generalize the&nbsp;"parsing" and&nbsp;focus on&nbsp;the data structure you need. Instead of&nbsp;downloading, processing, and&nbsp;transforming the&nbsp;data each time you need to&nbsp;parse a&nbsp;web page, use parsz. Enough of&nbsp;the TV commercial…</p>
-<p>I&nbsp;did <abbr>NOT</abbr> originally think of&nbsp;this. <a href="https://github.com/fizx/parsley/">This guy</a> did. I&nbsp;saw it, thought it was a&nbsp;great idea and&nbsp;decided such a&nbsp;simple idea could be implemented much easier by&nbsp;using Node.</p>
-<p>The&nbsp;idea that caught me was to&nbsp;not <nobr>re-implement</nobr> the&nbsp;same dang code over and&nbsp;over again (possibly with stupid mistakes) in&nbsp;order to&nbsp;preform data parsing on&nbsp;a web page. Looking back, it makes me feel stupid. <abbr>HTML</abbr> has for&nbsp;the most part, been standardized. Why did I&nbsp;never think to&nbsp;build a&nbsp;engine which would use data/element or&nbsp;data/attribute relationships to&nbsp;build a&nbsp;recipe for&nbsp;parsing needed data. I&nbsp;really like the&nbsp;notion of&nbsp;labeling the&nbsp;data by&nbsp;name and&nbsp;location and&nbsp;having "someone" else do the&nbsp;work.</p>
-<p>Since <abbr>JSON</abbr> has become very popular, I&nbsp;have not built in&nbsp;<abbr>XML</abbr> based output yet, although that may be just a&nbsp;npm module away.</p>
-<p>There are many improvements and&nbsp;features to&nbsp;add, like regular expression support and&nbsp;custom functions. But overall, the&nbsp;tool/library (however the&nbsp;community decides to&nbsp;use it) is in&nbsp;a fairly usable state.</p>
-<p>Here is the&nbsp;<a href="https://github.com/dijs/parsz">repo</a>.</p>
-<p>Have fun. Make sure to&nbsp;follow T&amp;C.</p>
-</article></body></html>]]></description><guid isPermaLink="false">Parsz</guid><dc:creator><![CDATA[Richard van der Dys III]]></dc:creator><pubDate>Sat, 24 Jan 2015 22:00:00 GMT</pubDate></item></channel></rss>
+</article></body></html>]]></description><guid isPermaLink="false">Mutation Testing in Javascript</guid><dc:creator><![CDATA[Richard van der Dys III]]></dc:creator><pubDate>Sat, 28 Feb 2015 22:00:00 GMT</pubDate></item></channel></rss>
